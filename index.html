@@ -12,51 +12,60 @@
       width: 100%;
       height: 100%;
       overflow: hidden;
-      background: #000;
+      background: black;
     }
 
-    iframe {
+    video, iframe {
       position: fixed;
       top: 0;
       left: 0;
-      width: 100%;
-      height: 100%;
+      width: 100vw;
+      height: 100vh;
       border: none;
+      background: black;
+    }
+
+    video {
+      object-fit: cover;
+    }
+
+    #anny {
+      display: none;
     }
   </style>
 </head>
 
 <body>
 
+  <video id="video" autoplay muted playsinline>
+    <source src="stele.mp4" type="video/mp4">
+  </video>
+
   <iframe
-    id="display"
-    src="https://xn--rthe-gra.my.canva.site/dahz3cllh-o"
-    allow="autoplay; fullscreen">
+    id="anny"
+    src="https://panels.anny.co/347a5d68-5cb2-44c9-8b62-e242c587ed2d?secret=51TJuLKSrq2BjzcdNVLyfwiz7OgUNvMm">
   </iframe>
 
   <script>
-    const canvaURL = "https://xn--rthe-gra.my.canva.site/dahz3cllh-o";
+    const video = document.getElementById("video");
+    const anny = document.getElementById("anny");
 
-    const annyURL = "https://panels.anny.co/347a5d68-5cb2-44c9-8b62-e242c587ed2d?secret=51TJuLKSrq2BjzcdNVLyfwiz7OgUNvMm";
+    video.addEventListener("ended", function() {
 
-    const display = document.getElementById("display");
+      video.style.display = "none";
+      anny.style.display = "block";
 
-    function showCanva() {
-      display.src = canvaURL;
+      setTimeout(function() {
 
-      // Canva 2 Minuten
-      setTimeout(showAnny, 120000);
-    }
+        anny.style.display = "none";
+        video.style.display = "block";
 
-    function showAnny() {
-      display.src = annyURL;
+        video.currentTime = 0;
+        video.play();
 
-      // Anny 30 Sekunden
-      setTimeout(showCanva, 30000);
-    }
+      }, 30000);
 
-    // Start mit Canva
-    setTimeout(showAnny, 120000);
+    });
   </script>
 
 </body>
