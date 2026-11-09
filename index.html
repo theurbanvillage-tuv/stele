@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stele</title>
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #000;
+    }
+
+    iframe {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <iframe
+    id="display"
+    src="https://xn--rthe-gra.my.canva.site/dahz3cllh-o"
+    allow="autoplay; fullscreen">
+  </iframe>
+
+  <script>
+    const canvaURL = "https://xn--rthe-gra.my.canva.site/dahz3cllh-o";
+
+    const annyURL = "https://panels.anny.co/347a5d68-5cb2-44c9-8b62-e242c587ed2d?secret=51TJuLKSrq2BjzcdNVLyfwiz7OgUNvMm";
+
+    const display = document.getElementById("display");
+
+    function showCanva() {
+      display.src = canvaURL;
+
+      // Canva 2 Minuten
+      setTimeout(showAnny, 120000);
+    }
+
+    function showAnny() {
+      display.src = annyURL;
+
+      // Anny 30 Sekunden
+      setTimeout(showCanva, 30000);
+    }
+
+    // Start mit Canva
+    setTimeout(showAnny, 120000);
+  </script>
+
+</body>
+</html>
